@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e 
+# Exit immediately if a command exits with a non-zero status
+set -e
 
 # Ensure the script is run with root privileges
 if [ "$EUID" -ne 0 ]; then
