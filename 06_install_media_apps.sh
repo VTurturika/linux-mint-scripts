@@ -15,6 +15,7 @@ echo "🚀 Starting classroom multimedia software deployment check..."
 APPS=(
     "openshot-qt"
     "gimp"
+    "inkscape"
     "simplescreenrecorder"
     "vlc"
     "handbrake"
@@ -38,8 +39,8 @@ fi
 
 # 4. Idempotency Evaluation: Skip if everything matches the desired state
 if [ ${#MISSING_APPS[@]} -eq 0 ] && [ "$REPO_BLENDER_PRESENT" = false ]; then
-    echo "ℹ️ All multimedia applications are already installed."
-    echo "ℹ️ Stock repository Blender is already uninstalled."
+    echo "All multimedia applications are already installed."
+    echo "Stock repository Blender is already uninstalled."
     echo "✅ System state is perfect. No changes needed."
     exit 0
 fi
