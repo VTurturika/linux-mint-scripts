@@ -19,7 +19,7 @@ if dpkg -l | grep -q "^ii  code "; then
 fi
 
 # 2. Set up environment variables
-DEST_FOLDER="/home/teacher/Завантаження"
+DEST_FOLDER="/home/teacher/Завантажене"
 DEST_FILE="vs-code-1.85.2.deb"
 
 # Ensure the target directory exists just in case
