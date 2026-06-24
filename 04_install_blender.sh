@@ -33,8 +33,8 @@ if [ ! -f "$RESOURCE_FILE" ]; then
     exit 1
 fi
 
-# 3. Setup download variables
-DEST_FOLDER="/home/teacher/Завантажене"
+# 3. Setup download variables (Using system temporary directory)
+DEST_FOLDER="/tmp"
 DEST_NAME="blender-2.76b-linux-glibc211-x86_64"
 DEST_FILE="$DEST_NAME.tar.bz2"
 

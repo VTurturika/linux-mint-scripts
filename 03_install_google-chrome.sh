@@ -19,8 +19,8 @@ if dpkg -l | grep -q "^ii  google-chrome-stable"; then
     exit 0
 fi
 
-# 2. Set up variables (Preserving your specific folder configuration)
-DEST_FOLDER="/home/teacher/Завантажене"
+# 2. Set up variables (Using system temporary directory)
+DEST_FOLDER="/tmp"
 DEST_FILE="google-chrome-stable_current_amd64.deb"
 
 # Ensure the target directory exists just in case
