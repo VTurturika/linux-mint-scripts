@@ -14,6 +14,8 @@ echo "🚀 Starting Visual Studio Code installation check..."
 # 1. Check if VS Code (package name 'code') is already installed
 if dpkg -l | grep -q "^ii  code "; then
     echo "ℹ️ Visual Studio Code is already installed on this system."
+    echo "🔒 Ensuring package is locked on this version..."
+    apt-mark hold code >/dev/null
     echo "✅ No changes needed."
     exit 0
 fi
@@ -33,7 +35,17 @@ echo "📦 Installing Visual Studio Code and resolving dependencies..."
 # 'apt install' is safer than 'dpkg -i' because it automatically pulls missing libraries
 apt install -y "$DEST_FOLDER/$DEST_FILE"
 
+echo "🔒 Pinning VS Code version 1.85.2 to block automatic apt updates..."
+# Lock the package version in apt
+apt-mark hold code
+
+# Remove the repository file created by the installer to keep apt updates clean
+if [ -f /etc/apt/sources.list.d/vscode.list ]; then
+    echo "🧹 Removing Microsoft repository configuration file..."
+    rm -f /etc/apt/sources.list.d/vscode.list
+fi
+
 echo "🧹 Cleaning up installation files..."
 rm -f "$DEST_FOLDER/$DEST_FILE"
 
-echo "🎉 All done! Visual Studio Code 1.85.2 has been successfully installed."
+echo "🎉 All done! Visual Studio Code 1.85.2 has been successfully installed and locked."
