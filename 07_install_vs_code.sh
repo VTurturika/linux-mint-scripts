@@ -16,6 +16,7 @@ if dpkg -l | grep -q "^ii  code "; then
     echo "ℹ️ Visual Studio Code is already installed on this system."
     echo "🔒 Ensuring package is locked on this version..."
     apt-mark hold code >/dev/null
+    rm -f /etc/apt/sources.list.d/vscode.list
     echo "✅ No changes needed."
     exit 0
 fi
